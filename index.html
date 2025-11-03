@@ -38,187 +38,57 @@
     <meta name="google-site-verification" content="aLyN5ErmZSlelTUd3NtEixDnSIPJ1szqJHl5eG7VKKI" />
     <style>
         :root {
-    --primary: #ff7b1c;
-    --secondary: #536DFE;
-    --accent: #FF4081;
-    --dark-bg: #695231;
-    --dark-card: #252C4A;
-    --dark-text: #E6E8F7;
-    --dark-border: #363F61;
+  :root {
+    --primary: #00f0ff;       /* Neon cyan for glow effect */
+    --secondary: #7f00ff;     /* Deep purple for gradient contrast */
+    --accent: #ff007f;        /* Neon pink accent */
+    --dark-bg: #0b0f19;       /* Deep midnight background */
+    --dark-card: #141b2d;     /* Slightly lighter card background */
+    --dark-text: #e4e8ff;     /* Soft off-white text */
+    --dark-border: #232c44;   /* Subtle bluish border */
 }
-       * {margin: 0;padding: 0;box-sizing: border-box;}
-        body {font-family: 'Open Sans', sans-serif;line-height: 1.6;color: var(--dark-text);background: var(--dark-bg);min-height: 100vh;}
-        .container {width: 100%;max-width: 1200px;margin: 0 auto;padding: 0 15px;}
-        header {background: linear-gradient(to right, var(--primary), var(--secondary));color: white;padding: 0.8rem 0;box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);position: sticky;top: 0;z-index: 100;
-transition: transform 0.3s ease-in-out;}
-        .header-hidden {transform: translateY(-100%);}
-        .header-content {display: flex;justify-content: space-between;align-items: center;
-flex-wrap: wrap;}
-        .logo {font-family: 'Montserrat', sans-serif;font-weight: 700;font-size: 1.8rem;display: flex;align-items: center;gap: 0.5rem;text-decoration: none;color: white;
-transition: transform 0.3s ease;}
-        .logo:hover {transform: scale(1.05);
-animation: pulse-glow 1.5s infinite;}
-        .main-nav {order: 1; width: 100%;
-margin-top: 10px;}
-        .nav-toggle {display: none; background: none; border: none; color: white; font-size: 1.5rem;
-cursor: pointer; padding: 0.5rem;}
-        .main-nav ul {list-style: none; display: flex; justify-content: center;
-align-items: center; flex-wrap: wrap; gap: 0.5rem; background-color: rgba(0,0,0,0.25); padding: 0.75rem; border-radius: 50px; border: 1px solid var(--dark-border);
-box-shadow: 0 2px 5px rgba(0,0,0,0.2) inset;}
-        .main-nav a {color: white; text-decoration: none;
-padding: 0.5rem 1rem; border-radius: 50px; transition: background-color 0.3s, transform 0.2s; font-weight: 600;
-font-size: 0.9rem;}
-        .main-nav a:hover {background-color: var(--accent);
-transform: translateY(-2px);}
-        .search-bar {display: flex;margin: 0 1rem; position: relative;}
-        .search-bar input {padding: 0.5rem 1rem;border: none;border-radius: 50px 0 0 50px;outline: none;background: rgba(255, 255, 255, 0.9); width: 200px;}
-        .search-bar button {background: var(--accent);color: white;border: none;padding: 0.5rem 1rem;border-radius: 0 50px 50px 0;cursor: pointer;}
-        #search-results {
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background-color: var(--dark-card);
-            border: 1px solid var(--dark-border);
-            border-radius: 0 0 10px 10px;
-            max-height: 300px;
-            overflow-y: auto;
-            z-index: 1000;
-            display: none;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            margin-top: 2px;
-        }
-        #search-results a {
-            display: block;
-            padding: 0.75rem 1rem;
-            color: var(--dark-text);
-            text-decoration: none;
-            transition: background-color 0.2s;
-            border-bottom: 1px solid var(--dark-border);
-            font-size: 0.9rem;
-        }
-         #search-results a:last-child {
-             border-bottom: none;
-         }
-        #search-results a:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-         #search-results .no-results {
-             padding: 1rem;
-             color: #aaa;
-             text-align: center;
-             font-style: italic;
-         }
-        .hero-header {background-color: var(--primary);
-background-image: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="transparent"/><path d="M0 0L100 100" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/><path d="M100 0L0 100" stroke="%23ffffff" stroke-width="0.5" opacity="0.1"/></svg>');color: white;padding: 2rem;border-radius: 10px;margin: 1.5rem 0;text-align: center;}
-        .hero-header h1 {font-family: 'Montserrat', sans-serif;font-size: 2.2rem;margin-bottom: 1rem;}
-        .hero-header p {margin: 0 auto;font-size: 1.1rem;}
-        .categories {margin: 1.5rem 0;}
-        .categories-title {font-family: 'Montserrat', sans-serif;text-align: center;margin-bottom: 1.2rem;font-size: 1.8rem;color: var(--primary);}
-        .category-grid {display: grid;grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));gap: 1rem;}
-       .category-item {color: white;padding: 1.2rem 1rem;border-radius: 8px;text-align: center;text-decoration: none;font-weight: 600;transition: transform 0.3s, box-shadow 0.3s;}
-        .category-item:hover {transform: scale(1.05) rotate(2deg);
-box-shadow: 0 10px 20px rgba(0,0,0,0.2);}
-        .section-title {font-family: 'Montserrat', sans-serif;text-align: center;margin: 2rem 0 1.5rem;font-size: 1.8rem;color: var(--primary);}
-        .games-grid {display: grid;grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));gap: 1.5rem;margin-bottom: 3rem;}
-        .game-card {background: var(--dark-card);border-radius: 10px;overflow: hidden;box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);transition: transform 0.3s, box-shadow 0.3s;border: 1px solid var(--dark-border);
-animation: float 4s ease-in-out infinite;}
-        .game-card:hover {transform: translateY(-5px);box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-animation-play-state: paused;}
-        .game-link {text-decoration: none;color: inherit;display: block;}
-        .game-image {height: 180px;background: linear-gradient(45deg, var(--secondary), var(--primary));display: flex;align-items: center;justify-content: center;color: white;position: relative;overflow: hidden;}
-        .game-image img {width: 100%;
-height: 100%; object-fit: cover;}
-        .game-info {padding: 1.2rem;text-align: center;}
-        .game-title {font-family: 'Montserrat', sans-serif;font-weight: 600;color: white;font-size: 1.1rem;}
-        .site-description {background: var(--dark-card);padding: 2rem;border-radius: 10px;margin: 2.5rem 0;box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);border: 1px solid var(--dark-border);}
-        .site-description h2 {font-family: 'Montserrat', sans-serif;color: var(--primary);margin-bottom: 1.2rem;text-align: center;}
-        .site-description h3 {font-family: 'Montserrat', sans-serif;color: var(--secondary);margin-top: 1.5rem;margin-bottom: 0.8rem;text-align: center;}
-        /* --- ИЗМЕНЕНИЕ: Убрана максимальная ширина и центрирование для p --- */
-        .site-description p {
-            margin-bottom: 1rem;
-            /* max-width: 800px; */ /* Удалено */
-            /* margin-left: auto; */ /* Удалено */
-            /* margin-right: auto; */ /* Удалено */
-            color: var(--dark-text);
-text-align: justify; /* Оставляем выравнивание по ширине */
-        }
-        /* --- ДОБАВЛЕНИЕ: Стили для списков в .site-description, как в game.ejs --- */
-        .site-description ul {
-            list-style: none;
-            padding-left: 1rem; /* Отступ слева для списка */
-            margin-bottom: 1rem; /* Отступ снизу для списка */
-        }
-        .site-description li {
-            margin-bottom: 0.5rem; /* Отступ снизу для элемента списка */
-            position: relative;
-            padding-left: 1.5rem; /* Отступ слева для текста внутри li, чтобы освободить место для маркера */
-        }
-        .site-description li::before {
-            content: "▶"; /* Символ маркера */
-            color: var(--primary); /* Цвет маркера */
-            font-weight: bold;
-            position: absolute;
-            left: 0; /* Позиционирование маркера слева */
-        }
-        /* --- КОНЕЦ ДОБАВЛЕНИЯ --- */
-        .ad-container {text-align: center; margin: 2rem auto;
-min-height: 100px;}
-        .ad-container:empty {display: none;}
-        .ad-container-dark {background-color: var(--dark-card);
-padding: 65px 0 55px 0; border-radius: 10px; margin-bottom: 1.5rem;}
-        footer {background: #15161f;color: white;padding: 2.5rem 0 1.5rem;margin-top: 2.5rem;border-top: 1px solid var(--dark-border);}
-        .footer-content {display: grid;grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));gap: 2rem;}
-        .footer-section h3 {font-family: 'Montserrat', sans-serif;margin-bottom: 1rem;font-size: 1.2rem;color: var(--primary);}
-        .footer-section p {color: #a0a0a8;margin-bottom: 1rem;max-width: 300px;}
-        .social-icons {display: flex;gap: 1rem;margin-top: 1rem;}
-        .social-icons a {display: inline-block;width: 40px;height: 40px;background: rgba(255, 255, 255, 0.1);border-radius: 50%;text-align: center;line-height:
-40px;transition: background 0.3s;color: white;}
-        .social-icons a:hover {background: var(--primary);}
-        .footer-bottom {text-align: center;margin-top: 2.5rem;padding-top: 1rem;border-top: 1px solid rgba(255, 255, 255, 0.1);}
-        .footer-links {display: flex;justify-content: center;gap: 1.5rem;margin-top: 1rem;flex-wrap: wrap;}
-        .footer-links a {color: #a0a0a8;text-decoration: none;transition: color 0.3s;}
-        .footer-links a:hover {color: white;}
-        .analytics-counter {margin-top: 1rem;}
-        #scrollToTopBtn {position: fixed;
-bottom: 20px; right: 30px; z-index: 99; font-size: 18px; border: none; outline: none; background-color: var(--accent); color: white; cursor: pointer; border-radius: 50%;
-width: 50px; height: 50px; transition: opacity 0.3s, transform 0.3s, visibility 0.3s; opacity: 0; visibility: hidden; display: flex; align-items: center;
-justify-content: center;}
-        #scrollToTopBtn.show {opacity: 1;
-visibility: visible;}
-        #scrollToTopBtn:hover {background-color: #ff5e9a;
-transform: scale(1.1);}
-        @keyframes float { 0% { transform: translateY(0px);
-} 50% { transform: translateY(-8px); } 100% { transform: translateY(0px);
-} }
-        @keyframes pulse-glow { 0%, 100% { text-shadow: 0 0 5px rgba(255, 64, 129, 0.7);
-} 50% { text-shadow: 0 0 20px rgba(255, 64, 129, 1);
-} }
-        @media (max-width: 992px) {
-            .nav-toggle {display: block;
-position: absolute; top: 10px; right: 15px;}
-            .header-content .search-bar { margin: 0.5rem auto;
+
+/* --- Modern Shady Enhancements --- */
+body {
+    background: radial-gradient(circle at top left, #0b0f19, #05070d);
+    color: var(--dark-text);
 }
-            .main-nav ul { display: none; flex-direction: column;
-width: 100%; background: var(--secondary); padding: 1rem 0; gap: 1rem; margin-top: 0; border-radius: 10px; border: none;
-box-shadow: none;}
-            .main-nav ul.active { display: flex;
+
+header {
+    background: linear-gradient(90deg, var(--secondary), var(--primary));
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
 }
-            .logo { flex-basis: 100%; text-align: center;
-justify-content: center;}
-            .search-bar { width: 90%; }
-            #search-results { right: auto; left: 0; width: 100%; }
-        }
-        @media (max-width: 768px) {.header-content {flex-direction: column;gap: 1rem;}.games-grid {grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));}.footer-links {flex-direction: column;gap: 0.5rem;}.category-grid {grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));}}
-        @media (max-width: 480px) {.hero-header h1 {font-size: 1.8rem;}.games-grid {grid-template-columns: 1fr;}.category-grid {grid-template-columns: repeat(2, 1fr);}}
-    </style>
-</head>
-<body class="theme-1">
-    <header>
-        <div class="container header-content">
-            <a href="/"
-class="logo">
+
+.logo {
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 10px rgba(0,255,255,0.5);
+}
+
+.main-nav a {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.main-nav a:hover {
+    background-color: var(--accent);
+    box-shadow: 0 0 15px var(--accent);
+}
+
+/* Card hover glow */
+.game-card:hover {
+    box-shadow: 0 0 25px rgba(0,255,255,0.3);
+}
+
+/* Hero gradient glow */
+.hero-header {
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    box-shadow: 0 0 20px rgba(127,0,255,0.3);
+}
+
+
+
                Only Sz Games
             </a>
             <nav class="main-nav">
