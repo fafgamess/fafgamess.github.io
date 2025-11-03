@@ -306,6 +306,7 @@ class="logo">
   to { transform: rotate(360deg); }
 }
 
+/* ✨ Fixed title clarity and glow */
 .hero-header h1 {
   font-size: 2.8em;
   margin-bottom: 20px;
@@ -314,11 +315,15 @@ class="logo">
   -webkit-text-fill-color: transparent;
   position: relative;
   z-index: 1;
+  text-shadow: 0 0 6px rgba(0, 255, 255, 0.3);
 }
 
+/* Make highlighted part (Only Sz Games) crisp and glowing */
 .hero-header h1 span {
+  -webkit-text-fill-color: #00f5ff;
+  -webkit-background-clip: unset;
   color: #00f5ff;
-  text-shadow: 0 0 10px #00f5ff;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
 }
 
 .hero-header p {
@@ -359,6 +364,9 @@ class="logo">
               0 0 40px rgba(255, 0, 200, 0.4);
 }
 </style>
+
+<!-- ✅ Page Title (for browser tab) -->
+<title>Only Sz Games — Play Unblocked Games Anywhere</title>
 
 
 <div class="games-section">
